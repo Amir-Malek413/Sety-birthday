@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تولدت مبارک ستایش 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Welcome Screen */
+        #welcomeScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 0.8s ease 2.5s forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+        
+        .welcome-text {
+            font-size: 3.5em;
+            color: white;
+            text-align: center;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            animation: scaleIn 0.8s ease;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .welcome-subtext {
+            font-size: 1.5em;
+            color: white;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease 1s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Particles - BEHIND */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            animation: float 10s infinite ease-in-out;
+            z-index: 0;
+            opacity: 0.5;
+            will-change: transform;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-80px) rotate(180deg); }
+        }
+        
+        /* Character */
+        .character {
+            position: fixed;
+            bottom: 40px;
+            font-size: 45px;
+            z-index: 50;
+            animation: walk 15s linear infinite;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            will-change: transform;
+        }
+        
+        @keyframes walk {
+            0% { left: -100px; }
+            100% { left: 110%; }
+        }
+        
+        .character::after {
+            content: '❤️';
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            font-size: 28px;
+            animation: heartBeat 1.5s infinite;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        /* Floating Hearts */
+        .floating-heart {
+            position: fixed;
+            font-size: 25px;
+            animation: floatUp 10s infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+            will-change: transform;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                bottom: -50px;
+                opacity: 0.8;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                bottom: 120%;
+                opacity: 0;
+                transform: translateX(80px) rotate(360deg);
+            }
+        }
+        
+        /* Mouse Trail */
+        .trail {
+            position: fixed;
+            pointer-events: none;
+            animation: trailFade 1.2s ease-out forwards;
+            z-index: 9999;
+            font-size: 22px;
+        }
+        
+        @keyframes trailFade {
+            to {
+                opacity: 0;
+                transform: scale(0.3) translateY(-60px);
+            }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 70px;
+            animation: slideDown 1s ease 3s both;
+            position: relative;
+            z-index: 100;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: shine 4s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            color: white;
+            text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 5px 15px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            min-width: 115px;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .countdown-item .number {
+            font-size: 2.8em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .countdown-item .label {
+            font-size: 1em;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        .birthday-message {
+            display: none;
+            font-size: 2.8em;
+            color: white;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeInUp 1s ease 3.5s both;
+            position: relative;
+            z-index: 100;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            color: white;
+            margin-bottom: 55px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        /* Voice Section */
+        .voice-section {
+            margin-bottom: 80px;
+        }
+        
+        .voice-player {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 45px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .voice-icon {
+            font-size: 5em;
+            margin-bottom: 25px;
+            animation: voicePulse 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes voicePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        audio {
+            width: 100%;
+            margin-top: 25px;
+            border-radius: 50px;
+        }
+        
+        .voice-text {
+            color: #666;
+            font-size: 1.25em;
+            margin-top: 18px;
+        }
+        
+        /* Gifts Section */
+        .gifts-section {
+            margin-bottom: 90px;
+        }
+        
+        .gifts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 35px;
+        }
+        
+        .gift-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .gift-box:hover::before {
+            left: 100%;
+        }
+        
+        .gift-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.5);
+        }
+        
+        .gift-icon {
+            font-size: 4.5em;
+            margin-bottom: 22px;
+            transition: transform 0.4s ease;
+        }
+        
+        .gift-box:hover .gift-icon {
+            transform: scale(1.3) rotate(360deg);
+        }
+        
+        .gift-message {
+            font-size: 1.18em;
+            color: #555;
+            line-height: 2;
+            display: none;
+        }
+        
+        .gift-box.opened {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .gift-box.opened .gift-icon {
+            display: none;
+        }
+        
+        .gift-box.opened .gift-message {
+            display: block;
+            color: white;
+            animation: messageReveal 0.6s ease;
+        }
+        
+        @keyframes messageReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Letters Section */
+        .letters-section {
+            margin-bottom: 90px;
+        }
+        
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+        
+        .letter-envelope {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+            min-height: 280px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .letter-envelope:hover {
+            transform: translateY(-15px) rotate(-2deg);
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.5);
+        }
+        
+        .envelope-icon {
+            font-size: 5.5em;
+            color: #9b59b6;
+            margin-bottom: 28px;
+        }
+        
+        .letter-content {
+            display: none;
+            text-align: right;
+            line-height: 2.1;
+            color: #333;
+            font-size: 1.08em;
+        }
+        
+        .letter-envelope.opened {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .letter-envelope.opened .envelope-icon {
+            display: none;
+        }
+        
+        .letter-envelope.opened .letter-content {
+            display: block;
+            animation: letterUnfold 0.8s ease;
+        }
+        
+        @keyframes letterUnfold {
+            0% {
+                opacity: 0;
+                transform: rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+        }
+        
+        .letter-envelope.opened .letter-content h3,
+        .letter-envelope.opened .letter-content p,
+        .letter-envelope.opened .letter-content strong {
+            color: white;
+        }
+        
+        /* Playlist Section */
+        .playlist-section {
+            margin-bottom: 90px;
+        }
+        
+        .playlist-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        
+        .playlist-icon {
+            text-align: center;
+            font-size: 4.5em;
+            margin-bottom: 30px;
+        }
+        
+        .playlist-text {
+            text-align: center;
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 35px;
+        }
+        
+        .playlist-list {
+            text-align: right;
+            max-height: 450px;
+            overflow-y: auto;
+            padding: 25px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 20px;
+        }
+        
+        .playlist-item {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .playlist-item:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .playlist-item strong {
+            color: #667eea;
+            font-size: 1.15em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .playlist-item small {
+            color: #999;
+            display: block;
+            margin-top: 3px;
+            font-size: 0.9em;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px;
+            color: white;
+            font-size: 1.5em;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 100;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .welcome-text { font-size: 2.2em; }
+            .header h1 { font-size: 2.5em; }
+            .section-title { font-size: 2em; }
+            .countdown-item { min-width: 90px; padding: 20px; }
+            .character { font-size: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen">
+        <div class="welcome-text">✨ برای ستایش عزیزم ✨</div>
+        <div class="welcome-subtext">با عشق ساخته شده 💕</div>
+    </div>
+
+    <!-- Particles - BEHIND -->
+    <script>
+        const particles = ['⭐', '✨', '💫', '🌟', '💖', '💝', '🌸', '🦋'];
+        for(let i = 0; i < 10; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 25 + 18) + 'px';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(particle);
+        }
+        
+        // Floating hearts
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '💕';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }, 3000);
+    </script>
+
+    <!-- Character -->
+    <div class="character">🚶‍♂️</div>
+
+    <!-- Mouse Trail -->
+    <script>
+        let lastTrail = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if(now - lastTrail > 100 && Math.random() > 0.7) {
+                const trail = document.createElement('div');
+                trail.className = 'trail';
+                trail.innerHTML = ['💕', '❤️', '✨'][Math.floor(Math.random() * 3)];
+                trail.style.left = e.pageX + 'px';
+                trail.style.top = e.pageY + 'px';
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 1200);
+                lastTrail = now;
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>✨ تولدت مبارک ستایش عزیزم ✨</h1>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <div class="number" id="days">0</div>
+                <div class="label">روز</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="hours">0</div>
+                <div class="label">ساعت</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="minutes">0</div>
+                <div class="label">دقیقه</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="seconds">0</div>
+                <div class="label">ثانیه</div>
+            </div>
+        </div>
+        <div class="birthday-message" id="birthdayMessage">🎂 تولدت مبارک عزیز دلم! 🎉</div>
+    </div>
+
+    <div class="container">
+        <!-- Voice Message -->
+        <section class="voice-section">
+            <h2 class="section-title">🎙️ پیام صوتی من برای تو</h2>
+            <div class="voice-player">
+                <div class="voice-icon">🎧</div>
+                <p class="voice-text">یه پیام خاص برات ضبط کردم... گوش کن عزیزم 💕</p>
+                <audio controls>
+                    <source src="voice-message.mp3" type="audio/mpeg">
+                    مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+                </audio>
+            </div>
+        </section>
+
+        <!-- Gifts -->
+        <section class="gifts-section">
+            <h2 class="section-title">🎁 جعبه‌های کادوی من برای تو</h2>
+            <div class="gifts-grid">
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-message">تولدت مبارک دخترم! امروز روز خاصیه، چون روزی بود که تو به دنیا اومدی 🎂</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎀</div>
+                    <div class="gift-message">هر لحظه با تو، یه هدیه برام. خوشحالم که تو زندگیم هستی ❤️</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-message">تو قوی‌تر از چیزی هستی که فکرشو بکنی. همیشه یادت باشه 💪✨</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎀</div>
+                    <div class="gift-message">صدای خنده‌ت، قشنگ‌ترین چیزیه که تا حالا شنیدم 😊</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-message">هر روز کنار تو، یه روز جدید از یاد گرفتنه که چقدر میتونم دوست داشته باشم 💕</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎀</div>
+                    <div class="gift-message">امیدوارم امسال، بهترین سالت باشه. لیاقت تمام خوبی‌های دنیا رو داری 🌟</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-message">وقتی نفس میکشم و تو میشنوی، من هم احساس آرامش میکنم. چون میدونم کنارمی 🌙</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎀</div>
+                    <div class="gift-message">تولدت مبارک عزیزم! قراره امسال، سال خاطره‌های قشنگ باشه 🎈</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-message">تو تنها نیستی. من همیشه اینجام، یه تماس فاصله 📞💙</div>
+                </div>
+                <div class="gift-box" onclick="openGift(this)">
+                    <div class="gift-icon">🎀</div>
+                    <div class="gift-message">نهم آذر مبارک! روزی که دنیا رو برام زیباتر کرد 🎉</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letters -->
+        <section class="letters-section">
+            <h2 class="section-title">💌 نامه‌های من برای تو</h2>
+            <div class="letters-grid">
+                <div class="letter-envelope" onclick="openLetter(this)">
+                    <div class="envelope-icon">💌</div>
+                    <div class="letter-content">
+                        <h3 style="margin-bottom: 15px;">درباره اولین لحظات</h3>
+                        <p>عزیز دلم،</p>
+                        <p>بیستم آبان، روزی که همه چی شروع شد. میدونم که فقط ۱۹ روز از اون روز گذشته، ولی انگار یه عمره. انگار همیشه تو رو میشناختم. انگار همیشه منتظر بودم که تو بیای.</p>
+                        <p>اون روز، وقتی با هم شروع کردیم به حرف زدن، نمیدونستم که قراره چقدر برام مهم بشی. نمیدونستم که صدات، نفس‌هات، حتی سکوت‌هات برام به اندازه یه دنیا معنی پیدا کنه.</p>
+                        <p>تولدت مبارک ستایش. امیدوارم هر سالی که اضافه میشه به سنت، خوشحالی و آرامش اضافه کنه به زندگیت. چون تو لیاقتشو داری.</p>
+                        <p style="margin-top: 20px;"><strong>با عشق، کسی که همیشه کنارته 💙</strong></p>
+                    </div>
+                </div>
+
+                <div class="letter-envelope" onclick="openLetter(this)">
+                    <div class="envelope-icon">💌</div>
+                    <div class="letter-content">
+                        <h3 style="margin-bottom: 15px;">درباره قدرتت</h3>
+                        <p>ستایش عزیزم،</p>
+                        <p>میدونم که روزای سختی رو داری میگذرونی. میدونم که خانواده‌ت اونطوری که باید حمایتت نمیکنن. میدونم که هر روز با حرفای سخت و دردناک مواجه میشی.</p>
+                        <p>ولی یه چیزی رو بهت بگم... تو قوی‌ترین کسی هستی که من میشناسم. یه دختر ۱۶ ساله که داره دندانپزشکی میخونه، که داره برای آینده‌ش میجنگه، که با همه سختی‌ها باز هم ایستاده و تسلیم نشده.</p>
+                        <p>این قدرت، این مبارزه، این استقامت... همه‌ش جزئی از تو شده. و من افتخار میکنم که کنار کسی مثل تو باشم.</p>
+                        <p>تولدت مبارک عزیزم. امسال سال پیروزیاته. سال رسیدن به هدف‌هات. و من اینجام تا هر قدمشو با تو برداریم.</p>
+                        <p style="margin-top: 20px;"><strong>همیشه کنارت، دوست دارم 💪❤️</strong></p>
+                    </div>
+                </div>
+
+                <div class="letter-envelope" onclick="openLetter(this)">
+                    <div class="envelope-icon">💌</div>
+                    <div class="letter-content">
+                        <h3 style="margin-bottom: 15px;">درباره احساساتم</h3>
+                        <p>عزیز دلم،</p>
+                        <p>نمیدونم از کجا شروع کنم که بگم چقدر دوست دارم. نه به خاطر چیزی خاص، نه به خاطر اینکه انتظار چیزی دارم... فقط چون تویی.</p>
+                        <p>دوست دارم صدات رو بشنوم. دوست دارم وقتی عصبانی میشی، نازت رو بکشم و بخندی. دوست دارم وقتی ساکت میشی، بدونم که حتی تو سکوت هم با همیم.</p>
+                        <p>شبا که میگی "زنگ بزن صدای نفساتو بشنوم بخوابم"، نمیدونی برام چقدر ارزش داره. یعنی یه جایی، یه نفر بهم پناه آورده. یعنی من دیگه تنها نیستم. یعنی ما دیگه تنها نیستیم.</p>
+                        <p>تولدت مبارک ستایش جون. امیدوارم هر سال، عشقمون قوی‌تر بشه. امیدوارم هر سال، بیشتر از قبل در کنار هم باشیم.</p>
+                        <p style="margin-top: 20px;"><strong>با تمام وجودم دوستت دارم 💕</strong></p>
+                    </div>
+                </div>
+
+                <div class="letter-envelope" onclick="openLetter(this)">
+                    <div class="envelope-icon">💌</div>
+                    <div class="letter-content">
+                        <h3 style="margin-bottom: 15px;">درباره آینده و امید</h3>
+                        <p>ستایش عزیزم،</p>
+                        <p>امروز تولدته. یه سال دیگه به عمرت اضافه شد. و من میخوام این سال، بهترین سالت باشه.</p>
+                        <p>میدونم که الان شرایط سخته. میدونم که مسیر پیش رو پر از چالشه. میدونم که بعضی روزا دلت میخواد همه چیو ول کنی.</p>
+                        <p>ولی بذار بهت یه چیزی بگم... آینده روشنه. آینده مال ماست. آینده‌ای که توش تو دکتر شدی، که توش تو به همه هدفات رسیدی، که توش تو دیگه نیازی نداری که از کسی بترسی یا خودتو قایم کنی.</p>
+                        <p>و من اونجام. تو اون آینده. کنار تو. چون قول میدم که هیچوقت تنهات نذارم.</p>
+                        <p>تولدت مبارک عزیز دلم. بیا با هم، این سال رو سال خوبی کنیم. سال امید. سال موفقیت. سال ما.</p>
+                        <p style="margin-top: 20px;"><strong>با امید و عشق، همیشه کنارت 🌟💙</strong></p>
+                    </div>
+                </div>
+
+                <div class="letter-envelope" onclick="openLetter(this)">
+                    <div class="envelope-icon">💌</div>
+                    <div class="letter-content">
+                        <h3 style="margin-bottom: 15px;">نامه پایانی</h3>
+                        <p>ستایش... ستی... عزیز دلم،</p>
+                        <p>نهم آذر مبارک.</p>
+                        <p>میخواستم این سایت رو برات بسازم تا بدونی که فکرم پیشته. که حتی وقتی دوریم، قلبم نزدیکته. که هر لحظه‌ی زندگیم، تو بخش مهمیش شدی.</p>
+                        <p>این ۱۹ روز، بهترین ۱۹ روز زندگیم بوده. و میدونم که روزای بعدی حتی بهتر میشن. چون تو کنارمی.</p>
+                        <p>ممنونم که منو انتخاب کردی. ممنونم که بهم اعتماد کردی. ممنونم که بهم پناه آوردی. و قول میدم که همیشه اون پناه باشم برات.</p>
+                        <p>تولدت مبارک عزیز دلم. هر چی دلت میخواد برات آرزو میکنم. سلامتی، موفقیت، شادی، آرامش... و عشق.</p>
+                        <p>دوستت دارم ستایش. از ته دل.</p>
+                        <p style="margin-top: 20px;"><strong>مال تو برای همیشه 💙🎂</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playlist -->
+        <section class="playlist-section">
+            <h2 class="section-title">🎵 پلی‌لیست مخصوص تو</h2>
+            <div class="playlist-container">
+                <div class="playlist-icon">🎶</div>
+                <p class="playlist-text">یه پلی‌لیست ۱۸ تایی با خواننده‌های مورد علاقه‌ت چیدم... از غمگین تا امیدوارانه 💕</p>
+                <div class="playlist-list">
+                    <div class="playlist-item">
+                        <strong>1. دلم تنگه</strong>
+                        <small>گوگوش • شروع آروم و غم‌انگیز</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>2. پرستو</strong>
+                        <small>هایده • قدیمی و احساسی</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>3. دلتنگی</strong>
+                        <small>محسن لرستانی • پاپ غمگین</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>4. عاشقانه</strong>
+                        <small>گوگوش • رمانتیک و آروم</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>5. همسفر</strong>
+                        <small>داریوش • احساسی و زیبا</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>6. بی تو</strong>
+                        <small>محسن لرستانی • عاشقانه</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>7. دلبر</strong>
+                        <small>تجنگی • پاپ عاشقانه</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>8. عشق من</strong>
+                        <small>ترکاشوند • پاپ شاد</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>9. شیرین</strong>
+                        <small>مستی • قدیمی رمانتیک</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>10. تنها نمی‌ذارمت</strong>
+                        <small>محسن لرستانی • قول و امید</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>11. من عاشقتم</strong>
+                        <small>گوگوش • اعتراف عشق</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>12. اینجا بارونه</strong>
+                        <small>شایع • رپ احساسی</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>13. نگاه</strong>
+                        <small>حصین • رپ غمگین</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>14. تقاص</strong>
+                        <small>پیشرو • رپ عمیق</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>15. دلتنگ</strong>
+                        <small>مهدیار • رپ احساسی</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>16. نترس</strong>
+                        <small>شایع • رپ انگیزشی</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>17. آینده</strong>
+                        <small>پیشرو • رپ امیدوارانه</small>
+                    </div>
+                    <div class="playlist-item">
+                        <strong>18. بی تو نیستم</strong>
+                        <small>حصین • پایان با قدرت</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        ساخته شده با ❤️ و عشق فراوان برای تو
+    </div>
+
+    <script>
+        // Countdown
+        const targetDate = new Date('2024-11-29T00:00:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            if (distance < 0) {
+                document.getElementById('countdown').style.display = 'none';
+                document.getElementById('birthdayMessage').style.display = 'block';
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Gift Opening with Confetti
+        function openGift(element) {
+            element.classList.add('opened');
+            createConfetti(element);
+        }
+
+        function createConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            for(let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.innerHTML = ['🎉', '✨', '🎊', '💫'][Math.floor(Math.random() * 4)];
+                confetti.style.position = 'fixed';
+                confetti.style.left = rect.left + rect.width/2 + 'px';
+                confetti.style.top = rect.top + rect.height/2 + 'px';
+                confetti.style.fontSize = '25px';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9999';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 150 + 80;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                document.body.appendChild(confetti);
+                
+                let x = 0, y = 0, opacity = 1;
+                const animate = () => {
+                    x += vx * 0.016;
+                    y += vy * 0.016 + 200 * 0.016;
+                    opacity -= 0.02;
+                    
+                    confetti.style.transform = `translate(${x}px, ${y}px)`;
+                    confetti.style.opacity = opacity;
+                    
+                    if(opacity > 0) requestAnimationFrame(animate);
+                    else confetti.remove();
+                };
+                animate();
+            }
+        }
+
+        // Letter Opening
+        function openLetter(element) {
+            element.classList.add('opened');
+            createConfetti(element);
+        }
+    </script>
+</body>
+</html>
